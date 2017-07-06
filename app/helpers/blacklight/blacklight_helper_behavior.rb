@@ -9,11 +9,22 @@ module Blacklight::BlacklightHelperBehavior
   ##
   # Get the name of this application from an i18n string
   # key: blacklight.application_name
+  # Try first in the current locale, then the default locale and finally in the
+  # English locale (provided by Blacklight).
   #
   # @return [String] the application name
+  # rubocop:disable Style/RescueModifier
   def application_name
-    t('blacklight.application_name')
+    # It's important that we don't use ActionView::Helpers::CacheHelper#cache here
+    # because it returns nil.
+    Rails.cache.fetch 'blacklight/application_name' do
+      (t('blacklight.application_name', raise: true) rescue false) ||
+        (t('blacklight.application_name', raise: true, locale: I18n.default_locale) rescue false) ||
+        t('blacklight.application_name', locale: :en)
+    end
   end
+  # rubocop:enable Style/RescueModifier
+
 
   ##
   # Get the page's HTML title
