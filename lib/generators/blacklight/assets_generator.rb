@@ -12,6 +12,14 @@ module Blacklight
       contents += "//= require jquery\n" if rails_5_1?
       contents += "//= require blacklight/blacklight\n"
 
+      # TODO can we have the application use YARN/Webpacker and `yarn add blacklight`?
+      # That should pull blacklight + bootstrap stuff into the bundle
+      contents += "//= require bootstrap/util\n"
+      contents += "//= require bootstrap/collapse\n"
+      contents += "//= require bootstrap/dropdown\n"
+      contents += "//= require bootstrap/alert\n"
+      contents += "//= require bootstrap/modal\n"
+
       marker = if turbolinks?
                  '//= require turbolinks'
                elsif rails_5_1?

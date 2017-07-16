@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency "kaminari", ">= 0.15" # the pagination (page 1,2,3, etc..) of our search results
   s.add_dependency "bootstrap", ">= 4.0.0.alpha5", "< 5"
   s.add_dependency "deprecation"
-  s.add_dependency "twitter-typeahead-rails", '0.11.1.pre.corejavascript'
+  #s.add_dependency "twitter-typeahead-rails", '0.11.1.pre.corejavascript'
 
   s.add_development_dependency "rsolr", ">= 1.0.6", "< 3"  # Library for interacting with rSolr.
   s.add_development_dependency "solr_wrapper"

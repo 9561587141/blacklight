@@ -7,7 +7,7 @@ You can use Blacklight to enable searching and browsing of your collections.
 Blacklight uses the [Apache Solr](http://lucene.apache.org/solr) search engine
 to search full text and/or metadata.  Blacklight has a highly
 configurable Ruby on Rails front-end. Blacklight was originally developed at
-the University of Virginia Library and is made public under an Apache 2.0 license. 
+the University of Virginia Library and is made public under an Apache 2.0 license.
 
 ## Installation
 
@@ -38,5 +38,15 @@ rails generate blacklight:install
 * Bundler
 * Rails 4.2+
 
-## Configuring Apache Solr 
+## Configuring Apache Solr
 You'll also want some information about how Blacklight expects [Apache Solr](http://lucene.apache.org/solr ) to run, which you can find in [README_SOLR](https://github.com/projectblacklight/blacklight/wiki/README_SOLR)
+
+## Building the javascript
+The javascript is built by webpack from sources in `app/javascript` into a bundle
+in `app/assets/javascripts/blacklight/blacklight.js`. This file should not be edited
+by hand as any changes would be overwritten.
+
+This is accomplished with the following steps:
+1. Install npm
+1. run `npm install` to download dependencies
+1. run `node_modules/.bin/webpack` to build the bundle
