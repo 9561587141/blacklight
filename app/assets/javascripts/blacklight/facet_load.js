@@ -9,11 +9,11 @@
 
     $('ul.facet-values, ul.pivot-facet').each(function(){
       var longest = $(this).find('span.facet-count').sort(longer).first();
-      var clone = longest.clone()
-        .css('visibility','hidden').css('width', 'auto');
-      $('body').append(clone);
-      $(this).find('.facet-count').first().width(clone.width());
-      clone.remove();
+      
+      if (longest && longest.textContent) {
+        var width = longest.textContent.length + 1 + 'ch';
+        $(this).find('.facet-count').first().width(width);
+      }
     });
   };
 
